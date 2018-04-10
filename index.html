@@ -14,6 +14,50 @@
     <script>
         $(function () {
 
+                $.fn.drags = function(opt) {
+
+                opt = $.extend({handle:"",cursor:"move"}, opt);
+
+                if(opt.handle === "") {
+                    var $el = this;
+                } else {
+                    var $el = this.find(opt.handle);
+                }
+
+                return $el.css('cursor', opt.cursor).on("mousedown", function(e) {
+                    if(opt.handle === "") {
+                        var $drag = $(this).addClass('draggable');
+                    } else {
+                        var $drag = $(this).addClass('active-handle').parent().addClass('draggable');
+                    }
+                    var z_idx = $drag.css('z-index'),
+                        drg_h = $drag.outerHeight(),
+                        drg_w = $drag.outerWidth(),
+                        pos_y = $drag.offset().top + drg_h - e.pageY,
+                        pos_x = $drag.offset().left + drg_w - e.pageX;
+                    $drag.css('z-index', 1000).parents().on("mousemove", function(e) {
+                        $('.draggable').offset({
+                            top:e.pageY + pos_y - drg_h,
+                            left:e.pageX + pos_x - drg_w
+                        }).on("mouseup", function() {
+                            $(this).removeClass('draggable').css('z-index', z_idx);
+                        });
+                    });
+                    e.preventDefault(); // disable selection
+                }).on("mouseup", function() {
+                    if(opt.handle === "") {
+                        $(this).removeClass('draggable');
+                    } else {
+                        $(this).removeClass('active-handle').parent().removeClass('draggable');
+                    }
+                });
+
+                }
+
+
+
+
+
             $.fn.previewer = function (options) {
                 var $this = this;
                 /*=========*/
@@ -30,7 +74,7 @@
                     style: {
                         width: "60%",
                         height: "300px",
-                        radius: "0 0 6px 6px"
+                        radius: " 0 0 0 6px"
                     },
                     class: "",
                     focus: true
@@ -44,28 +88,7 @@
                 /*=========*/
 
 
-                //TODO: find new way in real action is not good enough
-                var fn_handle_mousedown = function(e){
-                    window.my_dragging = {};
-                    my_dragging.pageX0 = e.pageX;
-                    my_dragging.pageY0 = e.pageY;
-                    my_dragging.elem = this;
-                    my_dragging.offset0 = $(this).offset();
-                    function handle_dragging(e){
-                        var left = my_dragging.offset0.left + (e.pageX - my_dragging.pageX0);
-                        var top = my_dragging.offset0.top + (e.pageY - my_dragging.pageY0);
-                        $(my_dragging.elem)
-                        .offset({top: top, left: left});
-                    }
-                    function handle_mouseup(e){
-                        $('body')
-                        .off('mousemove', handle_dragging)
-                        .off('mouseup', handle_mouseup);
-                    }
-                    $('body')
-                    .on('mouseup', handle_mouseup)
-                    .on('mousemove', handle_dragging);
-                }// fn_handle_mousedown
+           
 
 
                 var $settings = $.extend({}, defaults, options);
@@ -115,8 +138,7 @@
                     if (!$settings.show_tab)
                         $('.modal_previewer .nd_head').addClass('hide');
 
-                    // make dragable box
-                    $('.modal_previewer').mousedown(fn_handle_mousedown);
+                  
 
 
                      //close modal
@@ -126,6 +148,10 @@
 
 
 
+                    /*console.log($('.modal_previewer').innerWidth())
+                    console.log($('.modal_previewer').innerHeight())
+
+                    console.log( $(document). )*/
 
 
 
@@ -159,6 +185,7 @@
                                 var current = parseInt($('.modal_previewer ul').css("left"))
                                 $('.modal_previewer ul').css("left",(current+60)+"px"); 
                             });
+
                             $('.btn_nextSlide').on('click',function(){
                                 
                                 var current = parseInt($('.modal_previewer ul').css("left"))
@@ -181,9 +208,9 @@
                         // if click close button otherwise change tab view
 
                          if($(e.target).hasClass('btn_closeTabe')){
-                            var $tab_id = $(e.target).parent().data('id')
-                            var $title = $(e.target).parent().find('span').text()
-        
+                            var $tab_id = $(e.target).parent().data('id');
+                            var $title = $(e.target).parent().find('span').text();
+                     
                             // remove loged Id
                             var $index = $loged.indexOf($title)
                             if ($index !== -1) {
@@ -203,11 +230,13 @@
                                 $(".modal_previewer .nd_body").find('#'+nextId).fadeIn()
                             }else{ 
                                 var prevId = $(e.target).parent().prev().data('id')
-                                $('.modal_previewer #'+prevId).trigger('click')
+                                $(".modal_previewer .nd_body").find('#'+prevId).fadeIn()
                             }
 
                              $(".modal_previewer .nd_body").find('#'+$tab_id).remove();
                              $(e.target).parent().remove();
+
+                             
 
                          }else{
 
@@ -236,6 +265,10 @@
                     })
 
                     //$( ".modal_previewer .nd_head" ).scrollLeft( 300 );
+
+
+                      // make dragable box
+                      $('.modal_previewer').drags();
 
                 }; // fn_creat_newTabe
 
@@ -303,13 +336,13 @@
                         .modal_previewer a{    text-decoration: none;color: black;font-size: .9em;font-weight: normal;}
                         /*=====================*/
                         .modal_previewer ul{
-                            list-style-type: none;padding: 0;margin: 0;width: 100%
+                            list-style-type: none;padding: 0;margin: 0;width: 100%;
                             list-style-type: none;    position: relative;
                             padding: 0 30px;    transition: all 0.3s;
                             margin: 0;
                             width: 1000%;
-                            overflow: hidden;    border-radius: 4px 4px 0 0;
-                            border-bottom: 1px solid #aaa;
+                            overflow: hidden;   
+                           
                         }
                         .modal_previewer ul li{
                             float: left;margin: 0 4px 0 0;
@@ -365,7 +398,7 @@
                         /*====================*/
                         .modal_previewer .nd_head{
                             position: absolute;top: -32px;left: 0;width: 100%;z-index: 2; 
-                            padding:0 ${$settings.style.radius};overflow: hidden;background: #2196F3;
+                            padding:0 6px;overflow: hidden;background: #2196F3;    border-radius: 6px 6px 0 0;
                         }
                         .modal_previewer .nd_head.hide{
                             display:none;
@@ -373,11 +406,11 @@
                         .modal_previewer .nd_body{
                             overflow: hidden;width: 100%;height: 100%;position: relative;
                             border: 1px solid #aaa;
-                            border-radius:${$settings.style.radius};
+                            border-radius:0 0 6px 6px;
                         }
                         iframe{
                             width: 100%;height: 100%;overflow: hidden;position: absolute;top: 0;
-                            left: 0;z-index: 1;border: none;border-radius:${$settings.style.radius};
+                            left: 0;z-index: 1;border: none;border-radius:0 0 6px 6px};
                         }
                     
                     </style>`
@@ -401,15 +434,16 @@
             .btn_prevSlide,.btn_nextSlide{
                 position: absolute;
                 width: 30px;height: 34px;z-index: 6;
-                top: 0;background-color: rgba(255,255,255,.1);
-                cursor: pointer;display: none;
+                top: 0;
+                background: linear-gradient(to right, rgba(33,150,243,.1), rgba(33,150,243,1));
+                cursor: pointer;display: none;box-shadow: 1px 1px 20px rgba(33,150,243,.4);
 
             }
             .btn_prevSlide{
-                left: 0;transform: rotate(180deg);
+                left: -1px;transform: rotate(180deg);
             }
             .btn_nextSlide{
-                right: 0;
+                right: -1px;
             }
             /*=====*/
             .btn_nextSlide::after,
@@ -439,7 +473,7 @@
                 background-color: #eee;
                 position: absolute;
                 left: 10px;
-                top: 7px;
+                top: 7px;transition: all .3s ease-in-out;
                 border-radius: 100%;cursor: pointer;
                 z-index: 5;
                 border: 2px solid #2196f3;

@@ -1,0 +1,149 @@
+/*========*/
+
+/* LTR */
+
+.modal_previewer.previewer_ltr .nd_head .btn_close {
+    right: 10px;
+}
+
+.modal_previewer.previewer_ltr .nd_head .btn_close.active {
+    right: 40px;
+}
+
+.modal_previewer.previewer_ltr .nd_head ul li b {
+    right: 4px;
+}
+
+.modal_previewer.previewer_ltr ul li {
+    margin: 0 0 0 4px;
+}
+
+.modal_previewer.previewer_ltr ul li {
+    float: left;
+    margin: 0 6px 0 16px;
+}
+
+
+/*========*/
+
+/* RTL */
+
+.modal_previewer.previewer_rtl .nd_head .btn_close {
+    left: 10px;
+}
+
+.modal_previewer.previewer_rtl .nd_head .btn_close.active {
+    left: 40px;
+}
+
+.modal_previewer.previewer_rtl .nd_head ul li b {
+    left: 0px;
+}
+
+modal_previewer.previewer_rtl ul li {
+    margin: 0 4px 0 0;
+}
+
+.modal_previewer.previewer_rtl ul li {
+    float: right;
+    margin: 0 16px 0 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.btn_prevSlide,.btn_nextSlide{
+    position: absolute;
+    width: 30px;height: 34px;z-index: 6;
+    top: 0;
+    background: linear-gradient(to right, rgba(33,150,243,.1), rgba(33,150,243,1));
+    cursor: pointer;display: none;box-shadow: 1px 1px 20px rgba(33,150,243,.4);
+
+}
+.btn_prevSlide{
+    left: -1px;transform: rotate(180deg);
+}
+.btn_nextSlide{
+    right: -1px;
+}
+/*=====*/
+.btn_nextSlide::after,
+.btn_nextSlide::before,
+.btn_prevSlide::after,
+.btn_prevSlide::before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 3px;
+    height: 14px;
+    background-color: #fff;
+    transform: rotate(56deg) translate(6px,4px);
+    left: 14px;
+    border-radius: 100px;
+    top: 6px;
+}
+.btn_nextSlide::before,.btn_prevSlide::before{
+ transform: rotate(-56deg) translateX(0px); 
+}
+/*===================*/
+/*===================*/
+.modal_previewer .nd_head  .btn_close{
+    width: 20px;
+    height: 20px;
+    background-color: #eee;
+    position: absolute;
+    top: 7px;transition: all .3s ease-in-out;
+    border-radius: 100%;cursor: pointer;
+    z-index: 5;
+    border: 2px solid #2196f3;
+}
+
+
+.modal_previewer .nd_head ul li b{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    transition: all .3s;
+    top: 8px;
+   
+}
+ .modal_previewer .nd_head ul li b:hover{
+    background-color: #f44336;
+} 
+.modal_previewer .nd_head ul li b::after,
+.modal_previewer .nd_head ul li b::before,
+.modal_previewer .nd_head  .btn_close::after,
+.modal_previewer .nd_head  .btn_close::before{
+    content: '';
+    display: block;
+    width: 2px;
+    position: absolute;
+    height: 10px;
+    background-color: #3a3a3a;
+    border-radius: 50px;
+    transform: rotate(-45deg);
+    left: 7px;
+    top: 3px;
+}
+.modal_previewer .nd_head ul li b::before,
+.modal_previewer .nd_head  .btn_close::before{
+    transform: rotate(45deg);
+}
+.modal_previewer .nd_head ul li b:hover::after,.modal_previewer .nd_head ul li b:hover::before{
+    background-color: #fff;
+}
+
+.modal_previewer .nd_head  .btn_close:hover::after,
+.modal_previewer .nd_head  .btn_close:hover::before{
+    background-color: #f44336
+}
+
+

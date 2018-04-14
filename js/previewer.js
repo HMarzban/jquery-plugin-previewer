@@ -1,14 +1,16 @@
-    (function( factory ) {
-        if ( typeof define === "function" && define.amd ) {
-    
-            // AMD. Register as an anonymous module.
-            define([ "previewer" ], factory );
-        } else {
-    
-            // Browser globals
-            factory( jQuery );
-        }
-    }(function( $ ) {
+(function (factory) {
+    if (typeof define === "function" && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(["jquery"], factory);
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
+
+        /* $.previewer = $.previewer || {};
+
+		var version = $.previewer.version = "1.0.0";*/
 
         $.fn.nd_drags = function (opt) {
             opt = $.extend({
@@ -49,7 +51,7 @@
                     $(this).removeClass('active-handle').parent().removeClass('draggable');
                 }
             });
-        }; // $.fn.drags 
+        };// $.fn.drags 
     
         $.fn.previewer = function (options) {
             function is_touch_device() {
@@ -268,4 +270,6 @@
             }; // fn_creat_event_listner
         }; // $.fn.previewer 
     
+        //TODO: make event listener better structure for memory leak.
+        //TODO: make DOM selection for better memory leak.
     }));

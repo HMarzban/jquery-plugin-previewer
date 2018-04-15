@@ -111,6 +111,9 @@
     border: 1px solid #aaa;
     border-radius: 0 0 6px 6px;
 }
+.modal_previewer .nd_body > div{
+    display: none;
+}
 /*===== modal header*/
 .modal_previewer .nd_head {
     position: absolute;

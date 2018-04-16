@@ -2,7 +2,7 @@
 previewer.js
 =============
 
-Simple Jquery Module Plugin for preview link in your page. This Jquery plugin required for <a href="https://fanavard.com/" title="Fanavard">Fanavard</a> competition  UI Develop. 
+Simple Jquery Module Plugin for preview link in your page. This Jquery plugin required for <a href="https://fanavard.com/" title="Fanavard">Fanavard</a> Contest UI Develop. 
 
 <a href="https://github.com/HosseinMarzban/jquery-plugin-previewer/tree/master/demo" title="Demo previewer.js">DEMO</a>
 

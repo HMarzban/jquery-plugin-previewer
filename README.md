@@ -60,7 +60,7 @@ Option      | Default                                                   | Accept
 hold_time   | 1000                                                      | Milliseconds
 show_tab    | true                                                      | Boolean
 direction   | ltr                                                       | `LTR or RTL`
-sandbox     | `active: true,types: "allow-same-origin allow-scripts`    | `active:boolean,types:`[Ifame types](https://www.w3schools.com/tags/att_iframe_sandbox.asp)
+sandbox     | `active: true,types: "allow-same-origin allow-scripts`    | `active:boolean,types:`[Iframe Attribute](https://www.w3schools.com/tags/att_iframe_sandbox.asp)
 tab_Navigate| true                                                      | Boolean
 style       | `width: "60%",height: "300px"`                            | [width: px / % / vw  ,  height: px / % / vh ](https://www.w3schools.com/cssref/css_units.asp)
 class       | ""                                                        | CSS Class Name string

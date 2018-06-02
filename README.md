@@ -3,9 +3,9 @@ previewer.js
 =============
 
 Simple Jquery Module Plugin for preview link in your page. 
-This Jquery plugin open hyperlink in your website page on pops up modal, the user can open multi hyperlinks on one modal and manage them by tabs order. Test plugin now on the demo page.
+This Jquery plugin open hyperlink in your website page on pops up modal, the user can open multi hyperlinks on one modal and manage them by tabs order. Test plugin now on the <a href="https://hosseinmarzban.github.io/jquery-plugin-previewer/" title="Demo previewer.js">DEMO</a> page.
 
-<a href="https://github.com/HosseinMarzban/jquery-plugin-previewer/tree/master/demo" title="Demo previewer.js">DEMO</a>
+
 
 
 # How to use

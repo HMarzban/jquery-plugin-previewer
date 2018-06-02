@@ -8,10 +8,6 @@
     }
 }(function ($) {
 
-        /* $.previewer = $.previewer || {};
-
-		var version = $.previewer.version = "1.0.0";*/
-
         $.fn.nd_drags = function (opt) {
             opt = $.extend({
                 handle: "",
@@ -109,8 +105,6 @@
                 }
             };
 
-
-    
             $this.find('a').on('touchstart click', function (event) {
                 event.preventDefault();
             });

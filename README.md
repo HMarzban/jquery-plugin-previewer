@@ -2,14 +2,15 @@
 previewer.js
 =============
 
-Simple Jquery Module Plugin for preview link in your page. This Jquery plugin required for <a href="https://fanavard.com/" title="Fanavard">Fanavard</a> Contest UI Develop. 
+Simple Jquery Module Plugin for preview link in your page. 
+This Jquery plugin open hyperlink in your website page on pops up modal, the user can open multi hyperlinks on one modal and manage them by tabs order. Test plugin now on the demo page.
 
 <a href="https://github.com/HosseinMarzban/jquery-plugin-previewer/tree/master/demo" title="Demo previewer.js">DEMO</a>
 
 
 # How to use
 
-Add these two files in header or footer of your html file, Be careful before import `previewer.js` import <a href="https://code.jquery.com/" title="JQuery">JQuery</a> or <a href="http://requirejs.org/" title="requirejs">requirejs</a> base on you need.
+Add these two files in Header or Footer of your html file, Be careful before import `previewer.js` import <a href="https://code.jquery.com/" title="JQuery">JQuery</a> or <a href="http://requirejs.org/" title="requirejs">requirejs</a> base on you need.
 
 ``` html
 <link href="../css/style.css"  rel=stylesheet>

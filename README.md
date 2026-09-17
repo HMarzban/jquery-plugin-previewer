@@ -1,9 +1,12 @@
+## Historical jQuery plugin
+
+This plugin demonstrates tabbed link previews and AMD integration. The demo intentionally references the committed jQuery files in node_modules; they are retained so the historical static demo keeps its dependencies. The package test script is a placeholder.
 
 previewer.js
 =============
 
 Simple Jquery Module Plugin for preview link in your page. 
-This Jquery plugin open hyperlink in your website page on pops up modal, the user can open multi hyperlinks on one modal and manage them by tabs order. Test plugin now on the <a href="https://hosseinmarzban.github.io/jquery-plugin-previewer/" title="Demo previewer.js">DEMO</a> page.
+This Jquery plugin open hyperlink in your website page on pops up modal, the user can open multi hyperlinks on one modal and manage them by tabs order. Test plugin now on the <a href="https://hmarzban.github.io/jquery-plugin-previewer/" title="Demo previewer.js">DEMO</a> page.
 
 
 

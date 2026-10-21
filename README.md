@@ -1,6 +1,6 @@
 ## Historical jQuery plugin
 
-This plugin demonstrates tabbed link previews and AMD integration. The demo intentionally references the committed jQuery files in node_modules; they are retained so the historical static demo keeps its dependencies. The package test script is a placeholder.
+This plugin demonstrates tabbed link previews and AMD integration. GitHub Pages builds this site with Jekyll, which does not publish `node_modules`, so the demos load the patched jQuery 3.7.1 and RequireJS 2.3.8 files from `js/vendor`. Those files are copies of the versions installed from `package.json`. The package test script is a placeholder.
 
 previewer.js
 =============
@@ -32,7 +32,7 @@ $('.contentWraper').previewer(..option..);
 ``` javascript
 requirejs.config({
     paths: {
-        jquery: '../node_modules/jquery/dist/jquery.min',
+        jquery: '../js/vendor/jquery.min',
         previewer:'../js/previewer'
     }
 });
